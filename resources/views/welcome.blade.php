@@ -18,7 +18,6 @@
         <li><a href="#">Cricket Blog</a></li>
         <li><a href="#">Cricketers</a></li>
         <li class="active"><a href="#">Blog</a></li>
-        <li><a href="/Aboutus">About Us</a></li>
         @if (Route::has('login'))
                     @auth
                         <li><a href="{{ url('/dashboard') }}" >Dashboard</a></li>
@@ -54,7 +53,7 @@
             <div class="post-content">
               <h2 class="post-title"><a href="">Mahendra Singh Dhoni</a></h2>
               <div class="post-description">
-                White Sauce Pasta...
+                Mahendra Singh Dhoni...
               </div>
               <div class="post-read-more">
                 <a href=''>Read More</a>
@@ -66,13 +65,13 @@
           <article class="post">
             <div class="post-image">
               <a href="">
-                <img loading="lazy" decoding="async" src="images/download.jpeg" alt="White Sauce Pasta Recipe">
+                <img loading="lazy" decoding="async" src="images/download.jpeg" alt="Cricket Knowledge">
               </a>
             </div>
             <div class="post-content">
               <h2 class="post-title"><a href="">Virat Kholi</a></h2>
               <div class="post-description">
-                Mango Pancakes...
+                Virat Kohli.....
               </div>
               <div class="post-read-more">
                 <a href=''>Read More</a>
@@ -86,13 +85,13 @@
       <article class="post">
         <div class="post-image">
           <a href="">
-            <img loading="lazy" decoding="async" src="images/Rohit.jpg" alt="White Sauce Pasta Recipe">
+            <img loading="lazy" decoding="async" src="images/Rohit.jpg" alt="Cricket Knowledge">
           </a>
         </div>
         <div class="post-content">
           <h2 class="post-title"><a href="">Rohit Sharma</a></h2>
           <div class="post-description">
-            Dark Chocolate Cake....
+            Rohit Sharma....
           </div>
           <div class="post-read-more">
             <a href=''>Read More</a>
@@ -104,13 +103,13 @@
   <article class="post">
     <div class="post-image">
       <a href="">
-        <img loading="lazy" decoding="async" src="images/ravindra.jpeg" alt="White Sauce Pasta Recipe">
+        <img loading="lazy" decoding="async" src="images/ravindra.jpeg" alt="Cricket Knowledge">
       </a>
     </div>
     <div class="post-content">
       <h2 class="post-title"><a href="">Ravindra Jadeja </a></h2>
       <div class="post-description">
-        Spring Rolls are...
+        Ravindra Jadeja....
       </div>
       <div class="post-read-more">
         <a href=''>Read More</a>
@@ -135,7 +134,7 @@ margin-top: 29px;
             <article class="post">
     <div  class="post-image">
       <a href="">
-        <img loading="lazy" decoding="async" src="Images/veggie-spring-rolls-blog.jpg" alt="White Sauce Pasta Recipe">
+        <img loading="lazy" decoding="async" src="Images/veggie-spring-rolls-blog.jpg" alt="Cricket Knowledge">
       </a>
     </div>
     <div class="post-content">
@@ -158,6 +157,7 @@ margin-top: 29px;
 </section>
   </main>
   <script src="script.js"></script>
+  <x-footer></x-footer>
 </body>
 <style>
     body {
