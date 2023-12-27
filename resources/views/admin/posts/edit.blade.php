@@ -2,41 +2,44 @@
     <x-slot name="header">
         {{ __('Admin > Edit Post')}}
     </x-slot>
-    <div class="flex flex-col">
-        @if(Session::has('admin_flash'))
-            <x-alert type="error" position="top-right">{{ Session('admin_flash') }}</x-alert>
-        @endif
-        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-            <div class="overflow-hidden">
-                <table class="min-w-full text-left text-sm font-light">
-                <thead class="border-b font-medium dark:border-neutral-500">
-                    <tr>
-                    <x-admin-table-header scope="col" >#</x-admin-table-header>
-                    <x-admin-table-header scope="col" >Title</x-admin-table-header>
-                    <x-admin-table-header scope="col" >Category</x-admin-table-header>
-                    <x-admin-table-header scope="col" >User</x-admin-table-header>
-                    <x-admin-table-header scope="col" >Created At</x-admin-table-header>
-                    <x-admin-table-header scope="col" >Updated At</x-admin-table-header>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if($posts)
-                        @foreach ($posts as $post)
-                        <tr class="border-b dark:border-neutral-500">
-                            <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $post->id }}</td>
-                            <td class="whitespace-nowrap px-6 py-4">
-                                <a href="{{ route('admin-posts-edit', $post->id)}}">{{ $post->title }}</a></td>
-                                <td class="whitespace-nowrap px-6 py-4">{{ $post->category->name }}</td>
-                            <td class="whitespace-nowrap px-6 py-4">{{ $post->user->name }}</td>
-                            <td class="whitespace-nowrap px-6 py-4">{{ $post->created_at->diffForHumans() }}</td>
-                            <td class="whitespace-nowrap px-6 py-4">{{ $post->updated_at->diffForHumans() }}</td>
-                        </tr>
-                        @endforeach
-                    @endif
-                </tbody>
-                </table>
-            </div>
-            </div>
+    <form method="POST" action="{{ route('admin-posts-edit', $post->id) }}" class="p-3">
+        @csrf
+        @method('PATCH')
+
+        <!-- Title -->
+        <div class="p-2">
+            <label for="name">{{ __('Title') }}</label>
+            <x-text-input id="title" class="block mt-1 w-full"
+                type="text" name="title" required autofocus autocomplete="title"
+                :value="$post->title" />
         </div>
-    </div>
+
+        <!-- Category -->
+        <div class="p-2">
+            <label for="category_id">{{ __('Category') }}</label>
+            <select name="category_id" id="category_id" class="block">
+                <option disabled>Select a category</option>
+                @foreach ($categories as $category)
+                <option value="{{ $category->id }} {{ $category->id == $post->category->id ? 'selected' : '' }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <!-- Content -->
+        <div class="p-2">
+            <label for="content">{{ __('Content') }}</label>
+            <textarea id="content"
+                class="block mt-1 w-full rounded"
+                name="content"
+                rows="6"
+                required autofocus>{{ $post->content }}</textarea>
+        </div>
+
+        <x-form-errors />
+
+        <div class="block p-2">
+            <x-primary-button type="submit">Update</x-primary-button>
+        </div>
+
+    </form>
 </x-admin-layout>

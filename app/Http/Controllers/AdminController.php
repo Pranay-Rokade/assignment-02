@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,7 +11,15 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+
+        $html = Str::markdown('
+# Heading
+**bold**
+![eagle](/images/cricket.png)
+1. One
+2. Two
+        ');
+        return view('admin.index', ['html' => $html]);
     }
 
     /**
