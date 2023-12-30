@@ -49,7 +49,7 @@ class User extends Authenticatable
     }
 
     public function isAdmin() {
-        if( $this->role->name == 'Administrator') {
+        if( $this->name == 'Administrator') {
             return true;
         }
         return false;
